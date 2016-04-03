@@ -66,7 +66,7 @@
 											@if(Auth::user()->profile_pic)
                                         		<img src="{{asset('lb-faveo/dist/img')}}{{'/'}}{{Auth::user()->profile_pic}}"class="img-circle" alt="User Image" height="80" width="80"/>
                                          	@else
-	                                            <img src="{{ Gravatar::src(Auth::user()->email) }}" class="img-circle" alt="User Image">
+
                                     		@endif
                                     <h3 class="banner-title text-info h4">{{Auth::user()->first_name." ".Auth::user()->last_name}}</h3>
 											<div class="banner-content">

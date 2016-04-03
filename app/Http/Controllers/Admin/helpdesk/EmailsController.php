@@ -157,7 +157,7 @@ class EmailsController extends Controller
     }
 
 
-    dd($request);
+    //dd($request);
 
 
     if ($request->fetching_protocol === "imap" || $request->fetching_protocol === "gmail") {
@@ -258,15 +258,15 @@ class EmailsController extends Controller
       // fetch the selected emails
       $emails = $email->whereId($id)->first();
       // get all the departments
-      $departments = $department->get();
+      //$departments = $department->get();
       // get all the helptopic
-      $helps = $help->get();
+      //$helps = $help->get();
       // get all the priority
-      $priority = $ticket_priority->get();
+      //$priority = $ticket_priority->get();
       // get all the mailbox protocols
       $mailbox_protocols = $mailbox_protocol->get();
       // return if the execution is succeeded
-      return view('themes.default1.admin.helpdesk.emails.emails.edit', compact('mailbox_protocols', 'priority', 'departments', 'helps', 'emails'));
+      return view('themes.default1.admin.helpdesk.emails.emails.edit', compact('mailbox_protocols', 'priority', 'emails'));
     } catch (Exception $e) {
       // return if try fails
       return redirect()->back()->with('fails', $e->getMessage());

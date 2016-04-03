@@ -14,7 +14,6 @@ use App\User;
 use Auth;
 use Hash;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Mail;
 
@@ -45,16 +44,15 @@ class AuthController extends Controller
      * Create a new authentication controller instance.
      *
      * @param \Illuminate\Contracts\Auth\Guard     $auth
-     * @param \Illuminate\Contracts\Auth\Registrar $registrar
      *
      * @return void
      */
-    public function __construct(Guard $auth, Registrar $registrar, PhpMailController $PhpMailController)
+    public function __construct(Guard $auth, PhpMailController $PhpMailController)
     {
         $this->PhpMailController = $PhpMailController;
         SettingsController::smtp();
         $this->auth = $auth;
-        $this->registrar = $registrar;
+        //$this->registrar = $registrar;
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 

@@ -33,13 +33,6 @@
                 </a>
             </span>
         @endif
-        @if(App\Model\helpdesk\Settings\System::first()->status == 1)
-            <span onclick="javascript: window.location.href='https://support.ebs.in/app/index.php?/Tickets/Submit';">
-                <a href="{!! URL::route('form') !!}" class="widgetrowitem defaultwidget" style="background-image: URL('https://support.ebs.in/app/__swift/themes/client/images/icon_widget_submitticket.png');">
-                    <span class="widgetitemtitle">{!! Lang::get('lang.submit_a_ticket') !!}</span>
-                </a>
-            </span>
-        @endif
             <span onclick="javascript: window.location.href='https://support.ebs.in/app/index.php?/News/List';">
                 <a href="{{url('mytickets')}}" class="widgetrowitem defaultwidget" style="background-image: URL('https://support.ebs.in/app/__swift/themes/client/images/icon_widget_news.png');">
                     <span class="widgetitemtitle">{!! Lang::get('lang.my_tickets') !!}</span>

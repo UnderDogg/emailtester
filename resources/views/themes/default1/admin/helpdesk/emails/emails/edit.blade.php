@@ -69,37 +69,7 @@ class="active"
             </div>
         </div>
     </div>
-    <div class="box-header with-border">
-        <h3 class="box-title">{!! Lang::get('lang.new_ticket_settings') !!}</h3>
-    </div>
-    <div class="box-body">
-        <div class="row">
-            <!-- department -->
-            <div class="col-xs-4 form-group {{ $errors->has('department') ? 'has-error' : '' }}">
 
-                {!! Form::label('department',Lang::get('lang.department')) !!}
-                {!! $errors->first('department', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('department', [''=>'--System Default--','departments'=>$departments->lists('name','id')],null,['class' => 'form-control select']) !!}
-
-            </div>
-            <!-- priority -->
-            <div class="col-xs-4 form-group {{ $errors->has('priority') ? 'has-error' : '' }}">
-
-                {!! Form::label('priority',Lang::get('lang.priority')) !!}
-                {!! $errors->first('priority', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('priority', [''=>'--System Default--','Priorities'=>$priority->lists('priority_desc','priority_id')],null,['class' => 'form-control select']) !!}
-
-            </div>
-            <!-- help topic -->
-            <div class="col-xs-4 form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
-
-                {!! Form::label('help_topic',Lang::get('lang.help_topic')) !!}
-                {!! $errors->first('help_topic', '<spam class="help-block">:message</spam>') !!}
-                {!!Form::select('help_topic', [''=>'--System Default--','Help Topics'=>$helps->lists('topic','id')],null,['class' => 'form-control select']) !!}
-            </div>
-
-        </div>
-    </div>
     <div class="box-header with-border">
         <h3 class="box-title">{!! Lang::get('lang.incoming_email_information') !!}</h3>
     </div>
@@ -187,13 +157,8 @@ class="active"
             <div class="col-xs-3 form-group {!! $errors->has('sending_encryption') ? 'has-error' : ''!!}" id="sending_encryption_error">
                 {!! Form::label('sending_encryption',Lang::get('lang.encryption')) !!}
                 {!! $errors->first('sending_encryption', '<spam class="help-block">:message</spam>') !!} 
-                {!!Form::select('sending_encryption',['ssl'=>'SSL','tls'=>'TLS'],null,['class' => 'form-control select']) !!}
+                {!!Form::select('sending_encryption',['none'=>'None', 'ssl'=>'SSL','tls'=>'TLS'],null,['class' => 'form-control select']) !!}
             </div> 
-        </div>
-        <!-- Internal notes -->
-        <div class="form-group">
-            {!! Form::label('internal_notes',Lang::get('lang.internal_notes')) !!}
-            {!! Form::textarea('internal_notes',null,['class' => 'form-control','size' => '30x10']) !!}
         </div>
     </div>
     <div class="box-footer">
@@ -234,9 +199,6 @@ class="active"
         $("#spin").addClass("fa-spin");
         var email_address = document.getElementById('email_address').value;
         var email_name = document.getElementById('email_name').value;
-        var department = document.getElementById('department').value;
-        var priority = document.getElementById('priority').value;
-        var help_topic = document.getElementById('help_topic').value;
         var password = document.getElementById('password').value;
         var fetching_status = $('input#fetching_status[type="checkbox"]:checked', this).val();
         var fetching_protocol = document.getElementById('fetching_protocol').value;
@@ -272,33 +234,7 @@ class="active"
             error_list.push(error);
             $("#email_name_error").addClass("has-error");
         }
-        // checking for validation of department
-        if (department == "") {
-        } else if (department) {
-            if (!filter_number.test(department)) {
-                var error = "Please provide a valid department";
-                error_list.push(error);
-                $("#department_error").addClass("has-error");
-            }
-        }
-        // checking for validation of priority
-        if (priority == "") {
-        } else if (priority) {
-            if (!filter_number.test(priority)) {
-                var error = "Please provide a valid priority";
-                error_list.push(error);
-                $("#priority_error").addClass("has-error");
-            }
-        }
-        // checking for validation of help topic
-        if (help_topic == "") {
-        } else if (priority) {
-            if (!filter_number.test(priority)) {
-                var error = "Please provide a valid priority";
-                error_list.push(error);
-                $("#priority_error").addClass("has-error");
-            }
-        }
+
         // checking for validation of password
         if (password == "") {
             var error = "Password is a required field";
@@ -377,7 +313,7 @@ class="active"
                 }
             }
         }
-        // executing error chatch
+        // executing error catch
         if (error) {
             var ssss = "";
             $.each(error_list, function (key, value) {
@@ -392,6 +328,11 @@ class="active"
                 return false;
             }
         }
+
+
+
+
+
 
 // Ajax communicating to backend for further Checking/Saving the details
         $.ajax({

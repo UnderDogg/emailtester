@@ -92,7 +92,7 @@ if ($company != null) {
                                         @if(Auth::user()->profile_pic)
                                         <img src="{{asset('lb-faveo/media/profilepic')}}{{'/'}}{{Auth::user()->profile_pic}}" class="img-circle" alt="User Image" />
                                         @else                                      
-                                            <img src="{{ Gravatar::src(Auth::user()->email) }}" class="img-circle" alt="User Image">
+
                                         @endif
                                         <p>
                                             {{Auth::user()->first_name." ".Auth::user()->last_name}} - {{Auth::user()->role}}
@@ -127,7 +127,7 @@ if ($company != null) {
                                         @if(Auth::user() && Auth::user()->profile_pic)
                                             <img src="{{asset('lb-faveo/media/profilepic')}}{{'/'}}{{Auth::user()->profile_pic}}" class="img-circle" alt="User Image" />
                                         @else
-                                            <img src="{{ Gravatar::src(Auth::user()->email) }}" class="img-circle" alt="User Image">
+
                                         @endif
                                         </a>
                                         </div>
