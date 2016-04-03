@@ -1,0 +1,15 @@
+/node_modules
+/.idea
+/tests
+/vendor
+Homestead.yaml
+Homestead.json
+/nbproject/private/
+/nbproject
+/.env
+/public/ckeditor
+/public/downloads
+/public/filemanager
+/public/photos
+/public/uploads
+/public/vendor
